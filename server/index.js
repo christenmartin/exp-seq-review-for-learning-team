@@ -4,8 +4,6 @@ const express = require('express');
 const path = require('path');
 const volleyball = require('volleyball');
 const bodyParser = require('body-parser');
-const studentRouter = require('./api/student.route');
-const campusRouter = require('./api/campus.route')
 
 const app = express();
 
@@ -19,12 +17,9 @@ app.use(bodyParser.urlencoded({ extended: true }));
 //static middleware
 app.use(express.static(path.join(__dirname, '../public')));
 
-app.use('/api/students', studentRouter);
-app.use('/api/campuses', campusRouter);
-app.use('/api', require('./api')); // include our routes!
 
+app.use('/api', require('./api'));
 
-// apiRouter.use('/campuses', campusRouter);
 
 app.get('*', (req, res) => {
   res.sendFile(path.join(__dirname, '../public/index.html'));

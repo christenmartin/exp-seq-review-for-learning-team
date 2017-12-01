@@ -20,6 +20,7 @@ app.use(bodyParser.urlencoded({ extended: true }));
 app.use(express.static(path.join(__dirname, '../public')));
 
 app.use('/api/students', studentRouter);
+app.use('/api/campuses', campusRouter);
 app.use('/api', require('./api')); // include our routes!
 
 

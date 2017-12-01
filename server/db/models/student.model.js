@@ -33,12 +33,10 @@ const Student = db.define('students', {
   name: {
     type: Sequelize.VIRTUAL,
     get () {
-      return this.getDataValue('firstName') + this.getDataValue('lastName');
+      return `${this.getDataValue('firstName')} ${this.getDataValue('lastName')}`;
     }
   }
 
 })
 
 module.exports = Student;
-
-// must be assigned to a campus - think can do in other file

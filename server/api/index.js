@@ -17,16 +17,19 @@ apiRouter.get('/hello', (req, res) => res.send({hello: 'world'}))
 module.exports = apiRouter;
 
 // GET
-// - all campuses
-// - a campus by id
-// - all students
-// - a student by id
+////////// - all campuses
+//////////// - a campus by id
+////////// - all students
+//////////// - a student by id
+
 // POST
 // - new campus
 // - new student
+
 // PUT
 // - updated student info for one student
 // - updated campus info for one campus
+
 // DELETE
 // - a campus
 // - a student

@@ -1,0 +1,155 @@
+* {
+  box-sizing: border-box;
+}
+
+body {
+  background-color: black;
+}
+
+
+.navbar {
+  background-color: rgba(36, 36, 36 , 1);
+  justify-content: space-between;
+  border-radius: 0 0 10% 10%;
+  margin-right: 2%;
+  margin-left: 2%;
+}
+
+.navbar-brand {
+  font-family: "Atomic Age", cursive;
+  font-size: 1.7em;
+  margin-left: 1%;
+}
+
+#nav-links {
+  justify-content: flex-end;
+}
+
+.nav-item {
+  margin-left: 3.5%;
+  margin-right: 3.5%;
+  text-decoration: none;
+}
+
+.nav-item:hover {
+  color: white;
+  text-decoration: none;
+}
+
+.thumbnail img {
+  height: 300px;
+}
+
+#app {
+  padding-top: 7%;
+  padding-bottom: 5%;
+}
+
+.thumbnail {
+  margin: 1%;
+  text-decoration: none;
+  text-align: center;
+}
+
+#student-list-heading {
+  padding-bottom: 1em;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+.container {
+  display: flex;
+  align-text: center;
+}
+
+.app-container {
+  flex-direction: column;
+}
+
+#student-list {
+  justify-content: space-between;
+  flex-direction: column;
+}
+
+.student-row {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+.student-table {
+  color: #008BFF;
+  width: 70%;
+  margin: auto;
+}
+
+.footer {
+  position: absolute
+  bottom: 0;
+  top: 0;
+  width: 100%;
+  padding: 1rem;
+  background-color: rgba(0, 6, 30, 0.5);
+  align-content: center;
+}
+
+
+#btn-div {
+  margin: auto;
+  width: 70%;
+  display: flex;
+  justify-content: flex-end;
+  flex-direction: row;
+}
+
+
+#campus-name {
+  color: green;
+  font-size: 2.5em;
+}
+
+.campus-page {
+  flex-direction: column;
+}
+
+.campus-page img {
+  height: 85px;
+
+}
+
+.page-title {
+  display: flex;
+  flex-direction: row;
+  margin-top: 1em;
+  margin-bottom: 1em;
+  align-items: center;
+}
+
+.campus-pg-header {
+  display: flex;
+  flex-direction: column;
+}
+
+#nav-links .active {
+  color: green;
+}
+
+.btn-div {
+  padding-top: 2em;
+  padding-bottom: 1em;
+  display: flex;
+  justify-content: flex-end;;
+}
+
+
+.btn-container {
+  width: 70%;
+  display: flex;
+
+  justify-content: center;
+}
+
+.campus-description {
+  color: grey;
+}

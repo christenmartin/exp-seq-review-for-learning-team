@@ -1,5 +1,5 @@
 const Sequelize = require('sequelize');
-const db = require('../index.js');
+const db = require('../index');
 
 const Student = db.define('students', {
 
@@ -12,12 +12,12 @@ const Student = db.define('students', {
   lastName: {
     type: Sequelize.STRING,
     allowNull: false,
-    notEmpty: true //do we need allowNull AND notEmpty
+    notEmpty: true
   },
 
   email: {
     type: Sequelize.STRING,
-    allowNull: false, //not sure i need this AND isEmail
+    allowNull: false,
     notEmpty: true,
     isEmail: true
   },
@@ -36,7 +36,6 @@ const Student = db.define('students', {
       return `${this.getDataValue('firstName')} ${this.getDataValue('lastName')}`;
     }
   }
-
 })
 
 module.exports = Student;

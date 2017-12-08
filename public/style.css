@@ -1,3 +1,4 @@
+/*********************ALL ELEMENTS*/
 * {
   box-sizing: border-box;
 }
@@ -6,7 +7,13 @@ body {
   background-color: black;
 }
 
+#app {
+  padding-top: 7%;
+  padding-bottom: 5%;
+  /*width: 70%;*/
+}
 
+/*********************NAV BAR*/
 .navbar {
   background-color: rgba(36, 36, 36 , 1);
   justify-content: space-between;
@@ -36,13 +43,33 @@ body {
   text-decoration: none;
 }
 
-.thumbnail img {
-  height: 300px;
+/*********************FOOTER*/
+.footer {
+  position: absolute
+  bottom: 0;
+  top: 0;
+  width: 100%;
+  padding: 1rem;
+  background-color: rgba(0, 6, 30, 0.5);
+  align-content: center;
 }
 
-#app {
-  padding-top: 7%;
-  padding-bottom: 5%;
+/*********************MOST COMPONENTS WITHIN MAIN APP*/
+.app-container {
+  margin: auto;
+  flex-direction: column;
+  width: 70%;
+}
+
+.container {
+  display: flex;
+  /*align-text: center;*/
+}
+
+/*********************ALL CAMPUSES VIEW*/
+
+.thumbnail img {
+  height: 300px;
 }
 
 .thumbnail {
@@ -51,20 +78,16 @@ body {
   text-align: center;
 }
 
+.campus-container {
+  flex-direction: column;
+}
+
+/********************* ALL STUDENTS VIEW */
 #student-list-heading {
   padding-bottom: 1em;
   display: flex;
   flex-direction: row;
   justify-content: space-between;
-}
-
-.container {
-  display: flex;
-  align-text: center;
-}
-
-.app-container {
-  flex-direction: column;
 }
 
 #student-list {
@@ -80,50 +103,13 @@ body {
 
 .student-table {
   color: #008BFF;
-  width: 70%;
   margin: auto;
 }
 
-.footer {
-  position: absolute
-  bottom: 0;
-  top: 0;
-  width: 100%;
-  padding: 1rem;
-  background-color: rgba(0, 6, 30, 0.5);
-  align-content: center;
-}
+/*********************SINGLE CAMPUS VIEW*/
 
-
-#btn-div {
-  margin: auto;
-  width: 70%;
-  display: flex;
-  justify-content: flex-end;
-  flex-direction: row;
-}
-
-
-.page-name {
-  color: green;
-  font-size: 2.5em;
-}
-
-.campus-page {
-  flex-direction: column;
-}
-
-.campus-page img {
+.campus-pg-img {
   height: 85px;
-
-}
-
-.page-title {
-  display: flex;
-  flex-direction: row;
-  margin-top: 1em;
-  margin-bottom: 1em;
-  align-items: center;
 }
 
 .campus-pg-header {
@@ -131,28 +117,56 @@ body {
   flex-direction: column;
 }
 
-#nav-links .active {
-  color: green;
-}
-
-.btn-div {
-  padding-top: 2em;
-  padding-bottom: 1em;
-  display: flex;
-  justify-content: flex-end;;
-}
-
-
-.btn-container {
-  width: 70%;
-  display: flex;
-
-  justify-content: center;
-}
-
 .campus-description {
   color: grey;
 }
+
+.campus-pg-header-container {
+  flex-direction: row;
+}
+
+/*********************PAGE HEADINGS*/
+
+
+.page-name {
+  flex-shrink: 0;
+  color: green;
+  font-size: 2.5em;
+}
+
+.page-title {
+  display: flex;
+  flex-direction: row;
+  margin-top: 1em;
+  margin-bottom: 1em;
+  justify-content: space-between;
+  align-items: center;
+
+}
+
+/*********************BUTTONS*/
+
+.btn-container {
+  justify-content: flex-end;
+  padding-top: 2em;
+  padding-bottom: 1em;
+}
+
+.inner-btn-div {
+  /*width: 18%;*/
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+.campus-btn-div {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+
+/*********************FORMS*/
 
 .form-container {
   display: flex;
@@ -164,3 +178,4 @@ body {
   color: blue;
   margin: auto;
 }
+

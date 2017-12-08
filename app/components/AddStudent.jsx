@@ -8,23 +8,20 @@ class AddStudent extends Component {
 
   constructor () {
     super()
-    this.state = {firstName: '', lastName: '', email: '', gpa: '', campusId: ''}
+    this.state = {firstName: '', lastName: '', email: '', gpa: '', campusId: '2'}
     this.handleChange = this.handleChange.bind(this);
   }
 
   handleChange(e) {
     let key = e.target.name;
     let val = e.target.value;
-    console.log(e.target);
     this.setState({[key]: val});
   }
 
 
   render () {
-    console.log(this.state);
     const campuses = this.props.campuses;
     const newStudentObj = Object.assign({}, this.state, {gpa: Number(this.state.gpa), campusId: Number(this.state.campusId)})
-    console.log('obj: ', newStudentObj);
     return (<div className="form-container container">
             <h2 className="page-title page-name">Add Student</h2>
     <form className="form" onSubmit={(evt) => this.props.handleSubmit(newStudentObj, evt)}>

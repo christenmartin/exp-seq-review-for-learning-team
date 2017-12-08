@@ -7,8 +7,8 @@ import {connect} from 'react-redux';
 const AllCampuses = (props) => {
   const campuses = props.campuses;
   return (
-    <div className="container app-container">
-      <div className="row" id="all-campuses">
+    <div className="container campus-container">
+      <div className="row">
         {campuses.map(campus => {
           return (
             <div className="col-xs-4 thumbnail" key={campus.id}>
@@ -22,9 +22,11 @@ const AllCampuses = (props) => {
           );
         })}
         </div>
+        <div className="container btn-container">
         <Link to="/add-campus">
-        <div className="btn-div"><button className="btn btn-secondary" id="add-campus-btn">+ ADD CAMPUS</button></div>
+        <div><button className="btn btn-secondary">+ ADD CAMPUS</button></div>
         </Link>
+        </div>
         </div>
     )
 }

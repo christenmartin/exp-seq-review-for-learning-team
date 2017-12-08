@@ -11,42 +11,63 @@ class SingleStudent extends Component {
   }
 
   render() {
-
     const student = this.props.selectedStudent;
 
     const campus = this.props.selectedStudent.campus || {};
 
     return (
-      <div>
-      <div className='btn-container'>
-      <Link to={`/students/${student.id}/edit`}><div className="btn-div"><button className="btn btn-secondary" id="add-student-btn"> EDIT STUDENT INFO</button></div></Link>
-      <div className="btn-div"><button onClick={this.props.handleDelete}className="btn btn-danger" id="delete-student-btn"> DELETE STUDENT</button></div>
-      </div>
-      <table className="table student-table">
+      <div className="container app-container">
+      <div className="container page-title">
+      <h3 className="page-name">{student.name}</h3>
+        <div className="container btn-container">
+        <div className='inner-btn-div'>
+          <Link to={`/students/${student.id}/edit`}>
+            <div>
+              <button className="btn btn-secondary" id="add-student-btn">
 
-        <tbody>
-          <tr>
-            <th scope="col">NAME</th>
-            <td scope="col">{student.name}</td>
-          </tr>
-          <tr>
-            <th scope="row">ID</th>
-            <td>{student.id}</td>
-          </tr>
-          <tr>
-            <th scope="row">EMAIL</th>
-            <td>{student.email}</td>
-          </tr>
-          <tr>
-            <th scope="row">GPA</th>
-            <td>{student.gpa}</td>
-          </tr>
-          <tr>
-            <th scope="row">CAMPUS</th>
-            <td><Link to={`/campuses/${student.campusId}`}>{campus.name}</Link></td>
-          </tr>
-        </tbody>
-      </table>
+                EDIT
+              </button>
+            </div>
+          </Link>
+          <div>
+            <button
+              onClick={this.props.handleDelete}
+              className="btn btn-danger"
+              id="delete-student-btn"
+            >
+
+              DELETE
+            </button>
+          </div>
+          </div>
+        </div>
+        </div>
+        <table className="table student-table">
+          <tbody>
+            <tr>
+              <th scope="col">NAME</th>
+              <td scope="col">{student.name}</td>
+            </tr>
+            <tr>
+              <th scope="row">ID</th>
+              <td>{student.id}</td>
+            </tr>
+            <tr>
+              <th scope="row">EMAIL</th>
+              <td>{student.email}</td>
+            </tr>
+            <tr>
+              <th scope="row">GPA</th>
+              <td>{student.gpa}</td>
+            </tr>
+            <tr>
+              <th scope="row">CAMPUS</th>
+              <td>
+                <Link to={`/campuses/${student.campusId}`}>{campus.name}</Link>
+              </td>
+            </tr>
+          </tbody>
+        </table>
       </div>
     );
   }

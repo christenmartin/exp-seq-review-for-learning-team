@@ -1,23 +1,6 @@
-///////// MUST-HAVES:
+////////////haven't done this:
+can edit a campus's info, including ***adding/removing a student to/from that campus***
 
-views:
-
-CLEAN YOUR SHIT UPPPPPPP THIS IS NOT DRY
-
-add campus form
-
-do react-redux stuff
-
-
-
-actions:
-
-on single campus:
--can edit campus info, including adding/remove a student from that campus
-
-
-on single student:
--can edit a student's info, including student's campus
 
 
 ////////styling/nice to haves
@@ -47,8 +30,4 @@ get some groovier fonts going
 
 add other images for the campuses
 
-adding new channel example:
-
-action types - write channel
-action type - get channel from server
 

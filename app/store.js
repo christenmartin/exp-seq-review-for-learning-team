@@ -190,7 +190,7 @@ export const postStudent = (student, history) => {
     .then(res => res.data)
     .then(newStudent => {
       dispatch(getNewStudentFromServer(newStudent));
-      history.push(`/students/`);
+      history.push(`/students/${newStudent.id}`);
     })
   }
 }
@@ -201,7 +201,7 @@ export const postCampus = (campus, history) => {
     .then(res => res.data)
     .then(newCampus => {
       dispatch(getNewCampusFromServer(newCampus));
-      history.push(`/campuses`);
+      history.push(`/campuses/${newCampus.id}`);
     })
   }
 }
@@ -211,7 +211,6 @@ export const putStudent = (studentId, studentInfo, history) => {
     return axios.put(`/api/students/${studentId}`, studentInfo)
     .then(res => res.data)
     .then(updatedStudent => {
-      console.log('updated student: ', updatedStudent);
       dispatch(updateStudent(updatedStudent));
       history.push(`/students/${studentId}`)
     })
@@ -224,7 +223,6 @@ export const putCampus = (campusId, campusInfo, history) => {
     return axios.put(`/api/campuses/${campusId}`, campusInfo)
     .then(res => res.data)
     .then(updatedCampus => {
-      console.log('updated campus: ', updatedCampus);
       dispatch(updateCampus(updatedCampus));
       history.push(`/campuses/${campusId}`)
     })
@@ -261,11 +259,6 @@ const reducer = function(state = initialState, action) {
           if (campus.id === action.campus.id) return action.campus;
           else return state.campuses[index];
         })}
-    // case UPDATE_CAMPUS:
-      // return Object.assign({}, state, {campuses: state.campuses.map(campus => {
-      //   if (campus.id === action.campus.id) return action.campus;
-      //   else return state.campus;
-      // })});
     default:
       return state;
   }

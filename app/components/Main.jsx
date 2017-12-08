@@ -38,7 +38,6 @@ export default class Main extends Component {
     return (
       <Router>
         <div>
-        <div className="content">
           <Navbar />
           <div id="app">
           <Switch>
@@ -51,8 +50,8 @@ export default class Main extends Component {
           <Route path= '/students/:studentId' component={SingleStudent} />
           <Route path='/add-student' component={AddStudentContainer} />
           <Route path="/add-campus" component={AddCampusContainer} />
+          <Route component={AllCampusesContainer} />
           </Switch>
-          </div>
           </div>
           <Footer />
         </div>

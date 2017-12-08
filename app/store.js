@@ -13,8 +13,7 @@ const initialState = {
   newCampusEntry: {},
   selectedCampus: {},
   campusStudents: [],
-  selectedStudent: {},
-  test: ''
+  selectedStudent: {}
 };
 
 const GET_STUDENTS_FROM_SERVER = "GET_STUDENTS_FROM_SERVER";
@@ -30,9 +29,6 @@ const GET_SELECTED_CAMPUS = "GET_SELECTED_CAMPUS";
 
 const UPDATE_STUDENT = "UPDATE_STUDENT";
 const UPDATE_CAMPUS = 'UPDATE_CAMPUS';
-
-//update student?
-//update campus???
 
 const DELETE_STUDENT = 'DELETE_STUDENT';
 const DELETE_CAMPUS = 'DELETE_CAMPUS';
@@ -220,8 +216,19 @@ export const putStudent = (studentId, studentInfo, history) => {
       history.push(`/students/${studentId}`)
     })
     .catch(err => console.log(err.stack));
+  }
+}
 
-
+export const putCampus = (campusId, campusInfo, history) => {
+  return function thunk(dispatch) {
+    return axios.put(`/api/campuses/${campusId}`, campusInfo)
+    .then(res => res.data)
+    .then(updatedCampus => {
+      console.log('updated campus: ', updatedCampus);
+      dispatch(updateCampus(updatedCampus));
+      history.push(`/campuses/${campusId}`)
+    })
+    .catch(err => console.log(err.stack));
   }
 }
 
@@ -249,6 +256,11 @@ const reducer = function(state = initialState, action) {
         if (student.id === action.student.id) return action.student;
         else return state.students[index];
       })});
+    case UPDATE_CAMPUS:
+      return {...state, campuses: state.campuses.map((campus, index) => {
+          if (campus.id === action.campus.id) return action.campus;
+          else return state.campuses[index];
+        })}
     // case UPDATE_CAMPUS:
       // return Object.assign({}, state, {campuses: state.campuses.map(campus => {
       //   if (campus.id === action.campus.id) return action.campus;

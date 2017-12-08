@@ -26,7 +26,7 @@ class SingleCampus extends Component {
 
         </div>
         <div className='btn-container'>
-      <div className="btn-div"><button className="btn btn-secondary" id="add-student-btn"> EDIT CAMPUS INFO</button></div>
+      <Link to={`/campuses/${campus.id}/edit`}><div className="btn-div"><button className="btn btn-secondary" id="add-student-btn"> EDIT CAMPUS INFO</button></div></Link>
       <div className="btn-div"><button onClick={this.props.handeDelete}className="btn btn-danger" id="delete-student-btn"> DELETE CAMPUS</button></div>
       </div>
         <StudentList students={this.props.students} campus ={this.props.selectedCampus} />

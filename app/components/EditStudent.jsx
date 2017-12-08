@@ -2,13 +2,15 @@
 import React, { Component } from "react";
 
 import { connect } from "react-redux";
-import { postStudent } from "../store";
+import { putStudent } from "../store";
 
-class AddStudent extends Component {
+class EditStudent extends Component {
 
-  constructor () {
-    super()
-    this.state = {firstName: '', lastName: '', email: '', gpa: '', campusId: ''}
+  constructor(props) {
+    super(props)
+    let selectedStudent = props.selectedStudent;
+    this.state = {firstName: selectedStudent.firstName, lastName: selectedStudent.lastName, email: selectedStudent.email, gpa: selectedStudent.gpa, campusId: selectedStudent.campusId}
+    // this.state = {firstName: '', lastName: '', email: '', gpa: '', campusId: ''};
     this.handleChange = this.handleChange.bind(this);
   }
 
@@ -19,14 +21,14 @@ class AddStudent extends Component {
     this.setState({[key]: val});
   }
 
-
-  render () {
+  render() {
+    console.log('selected student: ', this.props.selectedStudent);
     console.log(this.state);
     const campuses = this.props.campuses;
     const newStudentObj = Object.assign({}, this.state, {gpa: Number(this.state.gpa), campusId: Number(this.state.campusId)})
     console.log('obj: ', newStudentObj);
     return (<div className="form-container container">
-            <h2 className="page-title page-name">Add Student</h2>
+            <h2 className="page-title page-name">Edit Student</h2>
     <form className="form" onSubmit={(evt) => this.props.handleSubmit(newStudentObj, evt)}>
     <div className="form-group">
     <label htmlFor="first-nameI">First Name</label>
@@ -61,20 +63,24 @@ class AddStudent extends Component {
 
 const mapStateToProps = (state) => {
   return {
-    campuses: state.campuses
+    campuses: state.campuses,
+    selectedStudent: state.selectedStudent
   }
 }
 
 const mapDispatchToProps = (dispatch, ownProps) => {
 
   return {
-    handleSubmit(newStudent, e) {
+    handleSubmit(updatedInfo, e) {
       e.preventDefault();
-      dispatch(postStudent(newStudent, ownProps.history));
+
+      dispatch(putStudent(ownProps.match.params.studentId, updatedInfo, ownProps.history));
+    }
     }
   }
-}
 
-const AddStudentContainer = connect(mapStateToProps, mapDispatchToProps)(AddStudent);
 
-export default AddStudentContainer;
+
+const EditStudentContainer = connect(mapStateToProps, mapDispatchToProps)(EditStudent);
+
+export default EditStudentContainer;

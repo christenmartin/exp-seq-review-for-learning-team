@@ -8,25 +8,28 @@ import axios from "axios";
 
 const initialState = {
   students: [],
-  // newStudentEntry: {},
+  newStudentEntry: {},
   campuses: [],
-  // newCampusEntry: {},
+  newCampusEntry: {},
   selectedCampus: {},
   campusStudents: [],
-  selectedStudent: {}
+  selectedStudent: {},
+  test: ''
 };
 
 const GET_STUDENTS_FROM_SERVER = "GET_STUDENTS_FROM_SERVER";
-// const GET_NEW_STUDENT_FROM_SERVER = "GET_NEW_STUDENT_FROM_SERVER";
-// const WRITE_NEW_STUDENT = "WRITE_NEW_STUDENT";
+const GET_NEW_STUDENT_FROM_SERVER = "GET_NEW_STUDENT_FROM_SERVER";
+
 
 const GET_CAMPUSES_FROM_SERVER = "GET_CAMPUSES_FROM_SERVER";
-// const GET_NEW_CAMPUS_FROM_SERVER = "GET_NEW_CAMPUS_FROM_SERVER";
-// const WRITE_NEW_CAMPUS = "WRITE_NEW_CAMPUS";
+const GET_NEW_CAMPUS_FROM_SERVER = "GET_NEW_CAMPUS_FROM_SERVER";
+
 
 const GET_SELECTED_STUDENT = "GET_SELECTED_STUDENT";
-
 const GET_SELECTED_CAMPUS = "GET_SELECTED_CAMPUS";
+
+const UPDATE_STUDENT = "UPDATE_STUDENT";
+const UPDATE_CAMPUS = 'UPDATE_CAMPUS';
 
 //update student?
 //update campus???
@@ -48,33 +51,20 @@ export const getCampusesFromServer = campuses => {
   };
 };
 
-// export const getNewStudentFromServer = newStudent => {
-//   return {
-//     type: GET_NEW_STUDENT_FROM_SERVER,
-//     newStudent
-//   };
-// };
+export const getNewStudentFromServer = newStudent => {
+  return {
+    type: GET_NEW_STUDENT_FROM_SERVER,
+    newStudent
+  };
+};
 
-// export const writeNewStudent = input => {
-//   return {
-//     type: WRITE_NEW_STUDENT,
-//     input
-//   };
-// };
+export const getNewCampusFromServer = newCampus => {
+  return {
+    type: GET_NEW_CAMPUS_FROM_SERVER,
+    newCampus
+  };
+};
 
-// export const getNewCampusFromServer = newCampus => {
-//   return {
-//     type: GET_NEW_CAMPUS_FROM_SERVER,
-//     newCampus
-//   };
-// };
-
-// export const writeNewCampus = input => {
-//   return {
-//     type: WRITE_NEW_CAMPUS,
-//     input
-//   };
-// };
 
 export const getSelectedCampus = campus => {
   return {
@@ -104,6 +94,19 @@ export const deleteCampus = campus => {
   }
 }
 
+export const updateStudent = student => {
+  return {
+    type: UPDATE_STUDENT,
+    student
+  }
+}
+
+export const updateCampus = campus => {
+  return {
+    type: UPDATE_CAMPUS,
+    campus
+  }
+}
 
 // THUNKING:
 
@@ -185,32 +188,72 @@ export const deleteCampusOnServer = (campusId, history) => {
   }
 }
 
+export const postStudent = (student, history) => {
+  return function thunk(dispatch) {
+    return axios.post('/api/students', student)
+    .then(res => res.data)
+    .then(newStudent => {
+      dispatch(getNewStudentFromServer(newStudent));
+      history.push(`/students/`);
+    })
+  }
+}
+
+export const postCampus = (campus, history) => {
+  return function thunk(dispatch) {
+    return axios.post('/api/campuses', campus)
+    .then(res => res.data)
+    .then(newCampus => {
+      dispatch(getNewCampusFromServer(newCampus));
+      history.push(`/campuses`);
+    })
+  }
+}
+
+export const putStudent = (studentId, studentInfo, history) => {
+  return function thunk(dispatch) {
+    return axios.put(`/api/students/${studentId}`, studentInfo)
+    .then(res => res.data)
+    .then(updatedStudent => {
+      console.log('updated student: ', updatedStudent);
+      dispatch(updateStudent(updatedStudent));
+      history.push(`/students/${studentId}`)
+    })
+    .catch(err => console.log(err.stack));
+
+
+  }
+}
+
 // MY REDUCER:
 
 const reducer = function(state = initialState, action) {
   switch (action.type) {
     case GET_STUDENTS_FROM_SERVER:
       return Object.assign({}, state, { students: action.students });
-    // case GET_NEW_STUDENT_FROM_SERVER:
-    //   return Object.assign({}, state, {
-    //     students: [...state.students, action.newStudent]
-    //   });
-    // case WRITE_NEW_STUDENT:
-    //   return Object.assign({}, state, { newStudentEntry: action.input });
+    case GET_NEW_STUDENT_FROM_SERVER:
+      return Object.assign({}, state, {
+        students: [...state.students, action.newStudent]
+      });
     case GET_CAMPUSES_FROM_SERVER:
       return Object.assign({}, state, { campuses: action.campuses });
-    // case GET_NEW_CAMPUS_FROM_SERVER:
-    //   return Object.assign({}, state, {
-    //     campuses: [...state.campuses, action.newCampus]});
-    // case WRITE_NEW_CAMPUS:
-    //   return Object.assign({}, state, {newCampusEntry: action.input});
-    case GET_SELECTED_CAMPUS:
+    case GET_NEW_CAMPUS_FROM_SERVER:
       return Object.assign({}, state, {
-        selectedCampus: action.campus,
-        campusStudents: action.campus.students
-      });
+        campuses: [...state.campuses, action.newCampus]});
+    case GET_SELECTED_CAMPUS:
+      return Object.assign({}, state, {selectedCampus: action.campus, campusStudents: action.campus.students});
     case GET_SELECTED_STUDENT:
       return Object.assign({}, state, { selectedStudent: action.student });
+    case UPDATE_STUDENT:
+      return Object.assign({}, state, {students: state.students.map((student, index) => {
+        if (student.id === action.student.id) return action.student;
+        else return state.students[index];
+      })});
+    // case UPDATE_CAMPUS:
+      // return Object.assign({}, state, {campuses: state.campuses.map(campus => {
+      //   if (campus.id === action.campus.id) return action.campus;
+      //   else return state.campus;
+      // })});
     default:
       return state;
   }

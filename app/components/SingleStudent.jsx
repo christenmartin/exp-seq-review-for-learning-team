@@ -19,7 +19,7 @@ class SingleStudent extends Component {
     return (
       <div>
       <div className='btn-container'>
-      <div className="btn-div"><button className="btn btn-secondary" id="add-student-btn"> EDIT STUDENT INFO</button></div>
+      <Link to={`/students/${student.id}/edit`}><div className="btn-div"><button className="btn btn-secondary" id="add-student-btn"> EDIT STUDENT INFO</button></div></Link>
       <div className="btn-div"><button onClick={this.props.handleDelete}className="btn btn-danger" id="delete-student-btn"> DELETE STUDENT</button></div>
       </div>
       <table className="table student-table">

@@ -10,30 +10,20 @@ do react-redux stuff
 
 
 
-single student view - from students, from single campus view
-
-link to single campus from single student page
-
-
-add button in students view to add student form
-
-delete button in students view to delete student
-
-
 actions:
-- can create a campus
+
+on single campus:
 -can edit campus info, including adding/remove a student from that campus
-- can delete a campus
--can create a student
+
+
+on single student:
 -can edit a student's info, including student's campus
--can delete a student
-
-
-
-
 
 
 ////////styling/nice to haves
+
+**wiping the selected student and campus on component will unmount******
+
 
 navbar header needs to be a responsive size, navbar just generally does weird stuff when the window size changes
 how to get the border radius of bootstrap nav to behave correctly
@@ -56,3 +46,9 @@ get some groovier fonts going
 **will need to clean up html tags/classes/ids, css style doc - lots of extraneous stuff in there
 
 add other images for the campuses
+
+adding new channel example:
+
+action types - write channel
+action type - get channel from server
+

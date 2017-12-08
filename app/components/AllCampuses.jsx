@@ -22,7 +22,9 @@ const AllCampuses = (props) => {
           );
         })}
         </div>
+        <Link to="/add-campus">
         <div className="btn-div"><button className="btn btn-secondary" id="add-campus-btn">+ ADD CAMPUS</button></div>
+        </Link>
         </div>
     )
 }

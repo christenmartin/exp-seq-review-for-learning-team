@@ -20,7 +20,7 @@ class SingleCampus extends Component {
         <div className="container page-title">
           <img src={campus.imageUrl} />
           <div className="campus-pg-header">
-            <h3 id="campus-name">{campus.name}</h3>
+            <h3 className="page-name">{campus.name}</h3>
             <span className="campus-description">{campus.description}</span>
           </div>
 

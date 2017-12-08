@@ -35,6 +35,7 @@ router.get('/:studentId', (req, res, next) => {
 })
 
 router.put('/:studentId', (req, res, next) => {
+  console.log(req.body);
   req.student.update(req.body)
   .then(updatedStudent => res.json(updatedStudent))
   .catch(next);

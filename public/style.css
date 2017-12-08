@@ -104,7 +104,7 @@ body {
 }
 
 
-#campus-name {
+.page-name {
   color: green;
   font-size: 2.5em;
 }
@@ -152,4 +152,15 @@ body {
 
 .campus-description {
   color: grey;
+}
+
+.form-container {
+  display: flex;
+  flex-direction: column;
+}
+
+.form {
+  width: 40%;
+  color: blue;
+  margin: auto;
 }

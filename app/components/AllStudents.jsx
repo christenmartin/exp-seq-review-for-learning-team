@@ -12,7 +12,7 @@ const AllStudents = (props) => {
   return (
      <div>
       <div className='btn-container'>
-      <div className="btn-div"><button className="btn btn-secondary" id="add-student-btn">+ ADD STUDENT</button></div>
+      <Link to="/add-student"><div className="btn-div"><button className="btn btn-secondary" id="add-student-btn">+ ADD STUDENT</button></div></Link>
       </div>
       <StudentList students={students}/>
      </div>

@@ -250,14 +250,14 @@ const reducer = function(state = initialState, action) {
     case GET_SELECTED_STUDENT:
       return Object.assign({}, state, { selectedStudent: action.student });
     case UPDATE_STUDENT:
-      return Object.assign({}, state, {students: state.students.map((student, index) => {
+      return Object.assign({}, state, {students: state.students.map(student => {
         if (student.id === action.student.id) return action.student;
-        else return state.students[index];
+        else return student;
       })});
     case UPDATE_CAMPUS:
-      return {...state, campuses: state.campuses.map((campus, index) => {
+      return {...state, campuses: state.campuses.map(campus => {
           if (campus.id === action.campus.id) return action.campus;
-          else return state.campuses[index];
+          else return campus;
         })}
     default:
       return state;

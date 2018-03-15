@@ -1,14 +1,16 @@
 'use strict'
 const apiRouter = require('express').Router();
 const db = require('../db/models')
-const studentRouter = require('./student.route');
-const campusRouter = require('./campus.route');
-
-apiRouter.use('/students', studentRouter);
-apiRouter.use('/campuses', campusRouter);
+const dogRouter = require('./dog.route');
+const ownerRouter = require('./owner.route');
 
 
-apiRouter.get('/hello', (req, res) => res.send({hello: 'world'}))
+//here im mounting two more routers on top of this router
+apiRouter.use('/dogs', dogRouter);
+apiRouter.use('/owners', ownerRouter);
+
+
+apiRouter.get('/hello', (req, res) => res.send({hello: 'where am i hi'}))
 
 
 module.exports = apiRouter;

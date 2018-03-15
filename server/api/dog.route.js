@@ -3,21 +3,22 @@ const {Dog, Owner} = require('../db/models');
 
 //!!!!!!!!! Remember that every route in here is prepended with localhost:3000/api/dogs
 
-router.get('/', (req, res, next) => {
-  Dog.findAll()
-  .then(dogs => res.json(dogs))
-  .catch(next)
-})
+router.get("/", (req, res, next) => {
+  if (!req.query.breed) {
+    Dog.findAll()
+      .then(dogs => res.json(dogs))
+      .catch(next);
+  } else {
+    //test this query out by adding ?breed=pug to the end of your URI
+    Dog.findThisBreed(req.query.breed)
+      .then(foundDogs => res.json(foundDogs))
+      .catch(next);
+  }
+});
 
 router.post('/', (req, res, next) => {
   Dog.create(req.body)
   .then((newDog) => res.json(newDog))
-  .catch(next)
-})
-
-router.get('/breeds/:breed', (req, res, next) => {
-  Dog.findThisBreed(req.params.breed)
-  .then((foundDogs) => res.json(foundDogs))
   .catch(next)
 })
 
